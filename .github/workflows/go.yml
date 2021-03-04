@@ -18,4 +18,8 @@ jobs:
       with:
         go-version: 1.15
 
-    - run: go test ./tests
+    - name: Build
+      run: go build -v ./...
+
+    - name: Test
+      run: go test -v ./...
