@@ -11,8 +11,7 @@ func HandleAboutInfo(w http.ResponseWriter, _ *http.Request) {
 
 	bytes, err := json.Marshal(aboutInfo)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
+		panic(err)
 	}
 
 	if _, err = w.Write(bytes); err != nil {

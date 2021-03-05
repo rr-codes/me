@@ -38,3 +38,32 @@ func TestAboutInfoHandler(t *testing.T) {
 		t.Fatalf("got: %v; want: %v", got, want)
 	}
 }
+
+type ResponseWriterMock struct {
+	statusCode int
+}
+
+func (rw *ResponseWriterMock) Header() http.Header {
+	return http.Header{}
+}
+
+func (rw *ResponseWriterMock) Error() string {
+	return ""
+}
+
+func (rw *ResponseWriterMock) Write([]byte) (int, error) {
+	return 500, rw
+}
+
+func (rw *ResponseWriterMock) WriteHeader(statusCode int) {
+	rw.statusCode = statusCode
+}
+
+func TestAboutInfoHandlerFail(t *testing.T) {
+	writer := ResponseWriterMock{}
+	handlers.HandleAboutInfo(&writer, nil)
+
+	if writer.statusCode != 500 {
+		t.Fatal("Expected status code to be 500")
+	}
+}
