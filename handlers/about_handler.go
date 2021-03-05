@@ -8,13 +8,9 @@ import (
 
 func HandleAboutInfo(w http.ResponseWriter, _ *http.Request) {
 	aboutInfo := models.GetAboutInfo()
+	bytes, _ := json.Marshal(aboutInfo)
 
-	bytes, err := json.Marshal(aboutInfo)
-	if err != nil {
-		panic(err)
-	}
-
-	if _, err = w.Write(bytes); err != nil {
+	if _, err := w.Write(bytes); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
