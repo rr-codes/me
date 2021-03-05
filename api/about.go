@@ -1,4 +1,4 @@
-package handlers
+package api
 
 import (
 	"encoding/json"
@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func HandleAboutInfo(w http.ResponseWriter, _ *http.Request) {
+func AboutHandler(w http.ResponseWriter, _ *http.Request) {
 	aboutInfo := models.GetAboutInfo()
 	bytes, _ := json.Marshal(aboutInfo)
 

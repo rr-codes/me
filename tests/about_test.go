@@ -2,7 +2,7 @@ package tests
 
 import (
 	"encoding/json"
-	"me/handlers"
+	"me/api"
 	"me/models"
 	"net/http"
 	"net/http/httptest"
@@ -17,7 +17,7 @@ func TestAboutInfoHandler(t *testing.T) {
 	}
 
 	rr := httptest.NewRecorder()
-	handler := http.HandlerFunc(handlers.HandleAboutInfo)
+	handler := http.HandlerFunc(api.AboutHandler)
 
 	handler.ServeHTTP(rr, req)
 
@@ -61,7 +61,7 @@ func (rw *ResponseWriterMock) WriteHeader(statusCode int) {
 
 func TestAboutInfoHandlerFail(t *testing.T) {
 	writer := ResponseWriterMock{}
-	handlers.HandleAboutInfo(&writer, nil)
+	api.AboutHandler(&writer, nil)
 
 	if writer.statusCode != 500 {
 		t.Fatal("Expected status code to be 500")
