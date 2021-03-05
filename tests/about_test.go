@@ -25,6 +25,10 @@ func TestAboutInfoHandler(t *testing.T) {
 		t.Fatalf("got: %d; want: http.StatusOK", rr.Code)
 	}
 
+	if rr.Header().Get("Access-Control-Allow-Origin") != "*" {
+		t.Fatal("Expected CORS header value to be '*'")
+	}
+
 	want := models.GetAboutInfo()
 	got := models.AboutInfo{}
 

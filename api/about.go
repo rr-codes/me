@@ -7,6 +7,8 @@ import (
 )
 
 func AboutHandler(w http.ResponseWriter, _ *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
 	aboutInfo := models.GetAboutInfo()
 	bytes, _ := json.Marshal(aboutInfo)
 
