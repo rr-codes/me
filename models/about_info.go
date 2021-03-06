@@ -21,7 +21,7 @@ func GetAboutInfo() AboutInfo {
 		Links: map[string]string{
 			"twitter":  "https://twitter.com/rr_codes",
 			"github":   "https://github.com/rr-codes",
-			"linkedin": "https://linkedin.com/in/richard-robinson-1694a7172/",
+			"linkedin": "https://linkedin.com/in/rr-codes",
 		},
 		Email: "richard@rr.codes",
 	}
