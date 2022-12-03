@@ -18,7 +18,7 @@ func GetAboutInfo() AboutInfo {
 	return AboutInfo{
 		Name:     "Richard Robinson",
 		Location: Location{City: "Cupertino", Country: "United States"},
-		Details:  "I'm an incoming WebKit Platform Engineer at Apple",
+		Details:  "I'm a Software Engineer on the WebKit team at Apple",
 		Education: []string{
 			"Bachelor of Engineering (B.Eng.), Spec. Hons. Software Engineering",
 		},
